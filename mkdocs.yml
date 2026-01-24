@@ -1,0 +1,39 @@
+site_name: can-log-analyzer
+site_url: https://chaitu-ycr.github.io/can-log-analyzer/
+site_description: "A web-based tool for analyzing CAN log files using NiceGui, Plotly, and cantools."
+site_author:  chaitu-ycr
+repo_name: "chaitu-ycr/can-log-analyzer"
+repo_url: https://github.com/chaitu-ycr/can-log-analyzer
+edit_uri: blob/main/
+
+nav:
+  - Home: index.md
+  - source-manual: source-manual.md
+
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - src  # Root level src if any
+          options:
+            docstring_style: google
+            show_source: false
+            merge_init_into_class: true
+            show_docstring_modules: false
+  - include-markdown:
+      recursive: true
+  - macros
+  - search
+
+theme:
+  name: material
+  features:
+    - toc.integrate
+    - search
+
+extra_css:
+  - _assets/extra.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@11.11.0/dist/mermaid.core.mjs

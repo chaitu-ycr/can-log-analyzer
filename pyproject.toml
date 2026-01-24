@@ -1,0 +1,51 @@
+[project]
+name = "can_log_analyzer"
+version = "26.0.0"
+description = "CAN log Analyzer"
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.10, <=3.14"
+authors = [{ name = "chaitu-ycr", email = "chaitu.ycr@gmail.com" }]
+keywords = ["python", "CAN", "log", "analyzer"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "cantools",
+    "python-can",
+    "pandas",
+    "pyarrow",
+    "plotly",
+    "nicegui[native]",
+    "matplotlib",
+]
+
+[dependency-groups]
+dev = [
+    "pyinstaller",
+    "ruff",
+    "pytest",
+    "pytest-html",
+    "pytest-sugar",
+    "pytest-clarity",
+    "pytest-cov",
+    "pytest-xdist",
+    "pytest-watch",
+    "mkdocs",
+    "mkdocs-puml",
+    "mkdocs-material",
+    "mkdocstrings[python]",
+    "mkdocs-macros-plugin",
+    "mkdocs-include-markdown-plugin",
+    "pymdown-extensions",
+]
+
+[project.urls]
+homepage = "https://github.com/chaitu-ycr/can-log-analyzer"
+repository = "https://github.com/chaitu-ycr/can-log-analyzer/"
+documentation = "https://chaitu-ycr.github.io/can-log-analyzer"
+
+[build-system]
+requires = ["uv_build"]
+build-backend = "uv_build"
