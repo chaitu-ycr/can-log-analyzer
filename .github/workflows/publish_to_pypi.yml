@@ -1,0 +1,45 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-publish:
+    runs-on: windows-latest
+    # Recommended: Use a GitHub Environment for PyPI
+    environment: release 
+    permissions:
+      id-token: write  # Required for Trusted Publishing (OIDC)
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          # optional: pin a specific uv version
+          # version: "0.5.x"
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Build distributions
+        # --no-sources ensures we don't accidentally bundle local dev paths
+        run: uv build --no-sources
+
+      - name: Upload distributions
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-dists
+          path: dist/
+
+      - name: Publish to PyPI
+        # Using uv publish handles the upload without needing manual tokens
+        # provided you have set up Trusted Publishing on PyPI.
+        run: uv publish
