@@ -1,6 +1,6 @@
 [project]
-name = "can_log_analyzer"
-version = "26.0.0"
+name = "can-log-analyzer"
+version = "26.0.1"
 description = "CAN log Analyzer"
 license = { file = "LICENSE" }
 readme = "README.md"
